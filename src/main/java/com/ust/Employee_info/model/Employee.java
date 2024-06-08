@@ -12,59 +12,71 @@ import org.springframework.stereotype.Service;
 @NoArgsConstructor
 @AllArgsConstructor
 @Service
+
 @Entity
 public class Employee {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
-    public String firstName;
-    public String lastName;
-    public String email;
-    public Long sal;
-    public String grade;
+    private int empid;
 
-    public Long getId() {
-        return id;
-    }
+    private String name;
+    private String basicSalary;
+    private char grade;
 
-    public void setId(Long id) {
-        this.id = id;
+    // Getters and Setters
+    public int getEmpid() {
+        return empid;
     }
 
-    public Long getsal() {
-        return sal;
-    }
-    public void setsal(Long sal) {
-        this.sal = sal;
-    }
-    public String getFirstName() {
-        return firstName;
+    public void setEmpid(int empid) {
+        this.empid = empid;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getName() {
+        return name;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getBasicSalary() {
+        return basicSalary;
     }
-    public String getgrade() {
+
+    public void setBasicSalary(String basicSalary) {
+        this.basicSalary = basicSalary;
+    }
+
+    public char getGrade() {
         return grade;
     }
 
-    public void setgrade(String grade) {
+    public void setGrade(char grade) {
         this.grade = grade;
     }
 
-    public String getEmail() {
-        return email;
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "empid=" + empid +
+                ", name='" + name + '\'' +
+                ", basicSalary='" + basicSalary + '\'' +
+                ", grade=" + grade +
+                '}';
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return empid == employee.empid;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(empid);
     }
 }
